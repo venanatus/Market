@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    .hero {
+        background: url('https://avatars.mds.yandex.net/get-altay/2960979/2a0000017260a9d9f85eb44d3ab634dd7d7f/XXL_height') center/cover;
+
+    }
+</style>
+{% block content %}
+    <div class="cvet">
+        <div class="columns">
+            <div class="column is-4"></div>
+            <div class="column is-4">
+                <div class="box">
+                    <form class="site-form  has-text-centered" method="post">
+                        <p class="title">Вход</p>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                            {{ field }}
+                        {% endfor %}
+                            {% for field in form2 %}
+                                <label for="">{{ field.label }}</label>
+                                <div class="field is-multiline">{{ field }}</div>
+                            {% endfor %}
+
+                        <div class="has-text-centered my-2">
+                            <button type="submit" style="background-color: cornflowerblue" class="button is-fullwidth">Регистрация</button>
+                        </div>
+                    </form>
+                    <div class="has-text-centered">увас уже есть профиль? <a href="{% url 'auth:a' %}">войти</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+</div>
+</body>

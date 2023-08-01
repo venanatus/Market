@@ -1,0 +1,35 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+</head>
+<body>
+{% block content %}
+    <div class="cvet">
+        <div class="columns is-centered">
+            <div class="column is-6">
+                <form class="site-form" method="post" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <label class="label has-text-centered" style="color: aqua" for="">{{ field.label }}</label>
+                        <div class="field">{{ field }}</div>
+                    {% endfor %}
+                    {% for field in form2 %}
+                        <label for="">{{ field.label }}</label>
+                        <div class="field">{{ field }}</div>
+                    {% endfor %}
+                    <div class="has-text-centered">
+                        <button type="submit" style="background-color: cornflowerblue;color: snow" class="button is-fullwidth">
+                            Создать
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

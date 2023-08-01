@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="cvet">
+        <br>
+        <br>
+        <div class="box site-form" style="width: 500px;display: flex;justify-content: center;margin-left: 500px;height: 400px">
+            <form  method="post" action="{% url 'shop:create_order' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="title">
+                    Информация о доставке
+                </div>
+                {% for field in form %}
+                    <div class="field">
+                        <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                        <div style="width: 100%; ">
+                            {{ field }}
+                        </div>
+                    </div>
+                {% endfor %}
+                <br>
+                <button type="submit" class="button is-fullwidth" style="color: white;background: rgb(136, 96, 208);">Заказать</button>
+            </form>
+        </div>
+        <div class="column is-6">
+        </div>
+    </div>
+{% endblock %}

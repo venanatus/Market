@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <div class="cvet">
+        <div class="columns">
+            <div class="column is-4"></div>
+            <div class="column is-4">
+                <div class="box">
+                    <form class="site-form  has-text-centered" method="post">
+                        <p class="title">Вход</p>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                            {{ field }}
+                        {% endfor %}
+                        <div class="has-text-centered my-2">
+                            <button type="submit" style="background-color: cornflowerblue" class="button is-fullwidth">
+                                Вход
+                            </button>
+                        </div>
+                        <br>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <div class="cvet">
+        <div class="box">
+            <div class="ml-3">
+                <br>
+                <div class="ml-4" style="font-size: 20px;font-weight: bold;color: black">Личные данные</div>
+                <div class="box" style="width: 1450px">
+                    <img style="border-radius: 50%" src="{{ profile.avatar.url }}" height="10px" width="100px" alt="">
+                    <br>
+                    <div class="columns">
+                        <br>
+                        <div class="column is-3">
+                            <br>
+                            <h1 style="color: black;font-size: 20px">Имя</h1>
+                            <div class="mt-1"
+                                 style="color: black;font-weight: bold;font-size: 20px">{{ profile.full_name }}</div>
+                        </div>
+                        <div class="column is-3">
+                            <br>
+                            <h1 style="color: black;font-size: 20px">Пол</h1>
+                            <div class="mt-1"
+                                 style="color: black;font-weight: bold;font-size: 20px">{{ profile.gender }}</div>
+                        </div>
+                        <div class="column mt-2">
+                            <br>
+                            <br>
+                            <a style="color: black;font-size: 20px" href="{% url 'auth:logout' %}">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

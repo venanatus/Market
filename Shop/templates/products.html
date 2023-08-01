@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <div class="cvet">
+    <div class="box">
+            <div style="margin-left: 36px">
+                <ul>
+                    <div class="columns mt-2">
+                        {% for product in products %}
+                            <a href="{% url 'shop:detail' product.pk %}">
+                                <div class="column">
+                                    <div class="box1">
+                                        <img class="photo" src="{{ product.preview.url }}" alt="">
+                                    </div>
+                                    <h1 style="color: black;font-size: 20px;font-weight: bold;margin-left: -20px;margin-top: -10px">{{ product.nineshnaya_cena }}
+                                        сум</h1>
+                                    <p style="color: gray;margin-left: -20px;text-decoration: line-through;font-size: 15px;margin-top: -2px">{{ product.proshlaya_cena }}
+                                        сум</p>
+                                    <p style="color: gray;margin-left: -20px;margin-top: -5px;font-size: 13px">{{ product.snippet }}</p>
+                                    <a href="{% url 'shop:products' %}?product={{ product.pk }}" class="order">
+                                        Купить
+                                            </a>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

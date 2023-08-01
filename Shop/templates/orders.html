@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="cvet">
+        <div class="box" style="width: 1200px;margin-left: 150px">
+            <div class="p-5">
+                <div class="content">
+                    {% if orders %}
+                        <div class="title has-text-centered" style="color: black;font-weight: bold">Ваши заказы</div>
+                        <table class="table has-text-centered">
+                            <thead>
+                            <tr style="color: black">
+                                <th>Номер заказа</th>
+                                <th>Продукты</th>
+                                <th>Тотал</th>
+                                <th>Статус</th>
+                                <th>Расплачен</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for order in orders %}
+                                <tr style="color: black;font-weight: bold">
+                                    <td>{{ order }}</td>
+                                    <td>
+                                        {% for order_product in order.order_products.all %}
+                                            <a href="{% url 'shop:detail' order_product.product.pk %}">
+                                                {{ order_product }}
+                                            </a>
+                                        {% endfor %}
+                                    </td>
+                                    <td>{{ order.total_price }} сум</td>
+                                    <td>Доставляется</td>
+                                    <td>Не заплачено</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p class="title has-text-centered">Nothing ordered yet</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
